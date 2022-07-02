@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文基于 hexo 框架下的 next 主题，写一下从无到有的搭建过程，里面都是自用配置；   对于小白小白来说，首先就是安装环境的搭建：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《next主题自用的相关配置及使用》">
+<meta property="og:url" content="https://caoysong.gitee.io/post/demo/index.html">
+<meta property="og:site_name" content="nagisa">
+<meta property="og:description" content="本文基于 hexo 框架下的 next 主题，写一下从无到有的搭建过程，里面都是自用配置；   对于小白小白来说，首先就是安装环境的搭建：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-26T11:48:00.000Z">
+<meta property="article:modified_time" content="2022-07-02T00:32:02.698Z">
+<meta property="article:author" content="caoysong">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://caoysong.gitee.io/post/demo/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/demo/","path":"post/demo/","title":"《next主题自用的相关配置及使用》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《next主题自用的相关配置及使用》 | nagisa</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nagisa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-音乐"><a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>音乐</a></li><li class="menu-item menu-item-追番"><a href="/zhuifan/" rel="section"><i class="fa fa-tv fa-fw"></i>追番</a></li><li class="menu-item menu-item-读书"><a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a></li><li class="menu-item menu-item-网站"><a href="/web/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>网站</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-%E5%92%8C-git-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">node 和 git 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Hexo-%E8%84%9A%E6%89%8B%E6%9E%B6%E5%8F%8A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Hexo 脚手架及创建项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">主题配置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="caoysong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">caoysong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《next主题自用的相关配置及使用》 | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《next主题自用的相关配置及使用》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-26 19:48:00" itemprop="dateCreated datePublished" datetime="2018-06-26T19:48:00+08:00">2018-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>本文基于 hexo 框架下的 next 主题，写一下从无到有的搭建过程，里面都是自用配置；</p>
+</blockquote>
+<blockquote>
+<p>对于小白小白来说，首先就是安装环境的搭建：</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="node-和-git-安装"><a href="#node-和-git-安装" class="headerlink" title="node 和 git 安装"></a>node 和 git 安装</h3><p>首先你要安装 Node,git 这两个基本工具，具体安装自行百度，网上讲的很明白。</p>
+<ul>
+<li>安装好 node 后配置 npm 淘宝镜像：</li>
+</ul>
+<p>永久使用：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>检测是否配置成功：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Hexo-脚手架及创建项目"><a href="#安装-Hexo-脚手架及创建项目" class="headerlink" title="安装 Hexo 脚手架及创建项目"></a>安装 Hexo 脚手架及创建项目</h3><ul>
+<li>安装脚手架</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo<span class="literal">-cli</span> <span class="literal">-g</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建 hexo 项目</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init 文件夹名</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装<code>next</code>主题：</li>
+</ul>
+<p>在项目的 root 目录下</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme<span class="literal">-next</span>/hexo<span class="literal">-theme-next</span> themes/next</span><br></pre></td></tr></table></figure>
+
+<h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p>我们在配置主题的时候要修改的是根目录的<code>_config.yml</code>和<code>themes/next</code>下的<code>_config.yml</code>。</p>
+<p>在根目录下<code>_config.yml</code>中：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="comment"># 你的站名</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="comment">#子标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="comment">#相关描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="comment"># 关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="comment">#作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="comment">#语言设置</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="comment">#时区设置</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>themes/next/_config.yml</code>中：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置网站的图标</span></span><br><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 网站底部设置</span></span><br><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="comment"># Specify the date when the site was setup. If not defined, current year will be used.</span></span><br><span class="line">  <span class="comment">#建站时间</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2018</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Icon between year and copyright info.</span></span><br><span class="line">  <span class="attr">icon:</span></span><br><span class="line">    <span class="comment"># Icon name in Font Awesome. See: https://fontawesome.com/icons</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">fa</span> <span class="string">fa-heart</span></span><br><span class="line">    <span class="comment"># If you want to animate the icon, set it to true.</span></span><br><span class="line">    <span class="attr">animated:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Change the color of icon, using Hex Code.</span></span><br><span class="line">    <span class="attr">color:</span> <span class="string">&quot;#ff0000&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># If not defined, `author` from Hexo `_config.yml` will be used.</span></span><br><span class="line">  <span class="attr">copyright:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Powered by Hexo &amp; NexT</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 版权声明</span></span><br><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">language:</span> <span class="string">deed.zh</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># next推荐四种风格，推荐用最后一种</span></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment"># scheme: Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Gemini</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 夜间模式</span></span><br><span class="line"><span class="attr">darkmode:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># 侧边栏位置设置</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">left</span></span><br><span class="line">  <span class="comment">#position: right</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 侧边栏头像设置</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/img/avatar.png</span></span><br><span class="line">  <span class="comment"># 设置圆形头像</span></span><br><span class="line">  <span class="attr">rounded:</span></span><br><span class="line">    <span class="literal">true</span></span><br><span class="line">    <span class="comment"># 设置hover旋转</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 侧边栏超链接设置</span></span><br><span class="line"><span class="attr">links_settings:</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">fa</span> <span class="string">fa-link</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">Links</span></span><br><span class="line">  <span class="comment"># Available values: block | inline</span></span><br><span class="line">  <span class="attr">layout:</span> <span class="string">inline</span></span><br><span class="line"></span><br><span class="line"><span class="attr">links:</span></span><br><span class="line"><span class="comment">#   name:url</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文章开头显示信息</span></span><br><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="attr">item_text:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">created_at:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">updated_at:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">another_day:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码风格</span></span><br><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">solarized</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">flat</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caoysong</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
