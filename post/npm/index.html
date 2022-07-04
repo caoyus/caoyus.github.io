@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2d3436"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#2d3436">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-barber-shop.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":true,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简介 npm 是跟随 node 一起安装的包（模块）管理器。常见的使用场景有以下几种：  允许用户从 npm 服务器下载别人编写的第三方包到本地使用。 允许用户从 npm 服务器下载并安装别人编写的命令行程序到本地使用。 允许用户将自己编写的包或命令行程序上传到 npm 服务器供别人使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《npm的常见命令》">
+<meta property="og:url" content="https://caoysong.gitee.io/post/npm/index.html">
+<meta property="og:site_name" content="nagisa">
+<meta property="og:description" content="简介 npm 是跟随 node 一起安装的包（模块）管理器。常见的使用场景有以下几种：  允许用户从 npm 服务器下载别人编写的第三方包到本地使用。 允许用户从 npm 服务器下载并安装别人编写的命令行程序到本地使用。 允许用户将自己编写的包或命令行程序上传到 npm 服务器供别人使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-01T19:38:15.000Z">
+<meta property="article:modified_time" content="2022-07-04T23:07:20.478Z">
+<meta property="article:author" content="caoysong">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="npm">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://caoysong.gitee.io/post/npm/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/npm/","path":"post/npm/","title":"《npm的常见命令》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《npm的常见命令》 | nagisa</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nagisa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
+      <img class="custom-logo-image" src="https://img.shields.io/badge/%E3%81%BF%E3%82%93%E3%81%AA-%E4%BB%8A%E6%97%A5%E3%82%82%E6%A5%BD%E3%81%97%E3%82%93%E3%81%A7%E3%81%AD-red" alt="nagisa">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a></li><li class="menu-item menu-item-音乐"><a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>音乐</a></li><li class="menu-item menu-item-追番"><a href="/zhuifan/" rel="section"><i class="fa fa-tv fa-fw"></i>追番</a></li><li class="menu-item menu-item-读书"><a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a></li><li class="menu-item menu-item-网站"><a href="/web/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>网站</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">检测是否安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text">安装模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B"><span class="nav-number">1.3.</span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%A8%A1%E5%9D%97"><span class="nav-number">1.4.</span> <span class="nav-text">更新模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E6%A8%A1%E5%9D%97"><span class="nav-number">1.5.</span> <span class="nav-text">卸载模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E7%A9%BA%E7%BC%93%E5%AD%98"><span class="nav-number">1.6.</span> <span class="nav-text">清空缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F"><span class="nav-number">1.7.</span> <span class="nav-text">使用淘宝镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">2.</span> <span class="nav-text">使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E6%AC%A1%E5%AE%89%E8%A3%85%E4%B8%8D%E6%88%90%E5%8A%9F%E5%B0%9D%E8%AF%95%E5%85%88%E6%B8%85%E6%A5%9A%E7%BC%93%E5%AD%98"><span class="nav-number">2.1.</span> <span class="nav-text">多次安装不成功尝试先清楚缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E5%8C%85%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">2.2.</span> <span class="nav-text">查看已安装包的版本号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nrm-%E7%9A%84%E4%BD%9C%E7%94%A8%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">nrm 的作用与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nrm-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">nrm 的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nrm-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.</span> <span class="nav-text">nrm 命令</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="caoysong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">caoysong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caoyus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caoyus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/caoyusong9527@163.com" title="E-Mail → caoyusong9527@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《npm的常见命令》 | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《npm的常见命令》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-02 03:38:15" itemprop="dateCreated datePublished" datetime="2019-07-02T03:38:15+08:00">2019-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>简介</strong></p>
+<p>npm 是跟随 node 一起安装的包（模块）管理器。常见的使用场景有以下几种：</p>
+<ul>
+<li>允许用户从 npm 服务器下载别人编写的第三方包到本地使用。</li>
+<li>允许用户从 npm 服务器下载并安装别人编写的命令行程序到本地使用。</li>
+<li>允许用户将自己编写的包或命令行程序上传到 npm 服务器供别人使用。<span id="more"></span></li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="检测是否安装"><a href="#检测是否安装" class="headerlink" title="检测是否安装"></a>检测是否安装</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -V  # 显示版本号说明已经安装相应的版本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成 package.json 文件：</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm install # 安装package.<span class="property">json</span>定义好的模块，简写 npm i</span><br><span class="line"></span><br><span class="line"># 安装包指定模块</span><br><span class="line">npm i &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 全局安装</span><br><span class="line">npm i &lt;<span class="title class_">ModuleName</span>&gt; -g</span><br><span class="line"></span><br><span class="line"># 安装包的同时，将信息写入到package.<span class="property">json</span>中的 dependencies 配置中</span><br><span class="line">npm i &lt;<span class="title class_">ModuleName</span>&gt; --save</span><br><span class="line"></span><br><span class="line"># 安装包的同时，将信息写入到package.<span class="property">json</span>中的 devDependencies 配置中</span><br><span class="line">npm i &lt;<span class="title class_">ModuleName</span>&gt; --save-dev</span><br><span class="line"></span><br><span class="line"># 安装多模块</span><br><span class="line">npm i &lt;<span class="title class_">ModuleName1</span>&gt; &lt;<span class="title class_">ModuleName2</span>&gt;</span><br><span class="line"></span><br><span class="line"># 安装方式参数：</span><br><span class="line">-save # 简写-S，加入到生产依赖中</span><br><span class="line">-save-dev # 简写-D，加入到开发依赖中</span><br><span class="line">-g # 全局安装 将安装包放在 /usr/local 下或者你 node 的安装目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 查看所有全局安装的包</span><br><span class="line">npm ls -g</span><br><span class="line"></span><br><span class="line"># 查看本地项目中安装的包</span><br><span class="line">npm ls</span><br><span class="line"></span><br><span class="line"># 查看包的 package.<span class="property">json</span>文件</span><br><span class="line">npm view &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 查看包的依赖关系</span><br><span class="line">npm view &lt;<span class="title class_">ModuleName</span>&gt; dependencies</span><br><span class="line"></span><br><span class="line"># 查看包的源文件地址</span><br><span class="line">npm view &lt;<span class="title class_">ModuleName</span>&gt; repository.<span class="property">url</span></span><br><span class="line"></span><br><span class="line"># 查看包所依赖的node版本</span><br><span class="line">npm view &lt;<span class="title class_">ModuleName</span>&gt; engines</span><br><span class="line"></span><br><span class="line"># 查看帮助</span><br><span class="line">npm help</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新模块"><a href="#更新模块" class="headerlink" title="更新模块"></a>更新模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 更新本地模块</span><br><span class="line">npm update &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 更新全局模块</span><br><span class="line">npm update -g &lt;<span class="title class_">ModuleName</span>&gt; # 更新全局软件包。</span><br><span class="line">npm update -g # 更新所有的全局软件包。</span><br><span class="line">npm outdated -g --depth=<span class="number">0</span> # 找出需要更新的包。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 卸载本地模块</span><br><span class="line">npm uninstall &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 卸载全局模块</span><br><span class="line">npm uninstall -g &lt;<span class="title class_">ModuleName</span>&gt; # 卸载全局软件包。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a>清空缓存</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 清空npm缓存</span><br><span class="line">npm cache clear</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用淘宝镜像"><a href="#使用淘宝镜像" class="headerlink" title="使用淘宝镜像"></a>使用淘宝镜像</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用淘宝镜像</span><br><span class="line">npm install -g cnpm --registry=<span class="attr">https</span>:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 更改包内容后进行重建</span><br><span class="line">npm rebuild &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</span><br><span class="line">npm outdated</span><br><span class="line"></span><br><span class="line"># 访问npm的json文件，此命令将会打开一个网页</span><br><span class="line">npm help json</span><br><span class="line"></span><br><span class="line"># 发布一个包的时候，需要检验某个包名是否存在</span><br><span class="line">npm search &lt;<span class="title class_">ModuleName</span>&gt;</span><br><span class="line"></span><br><span class="line"># 撤销自己发布过的某个版本代码</span><br><span class="line">npm unpublish &lt;package&gt; &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><h3 id="多次安装不成功尝试先清楚缓存"><a href="#多次安装不成功尝试先清楚缓存" class="headerlink" title="多次安装不成功尝试先清楚缓存"></a>多次安装不成功尝试先清楚缓存</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看已安装包的版本号"><a href="#查看已安装包的版本号" class="headerlink" title="查看已安装包的版本号"></a>查看已安装包的版本号</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls &lt;<span class="title class_">ModuleName</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：用此方法才能准确的知道项目使用的版本号，查看 package.json 时，有“^” 符号表示大于此版本</p>
+</blockquote>
+<h2 id="nrm-的作用与使用"><a href="#nrm-的作用与使用" class="headerlink" title="nrm 的作用与使用"></a>nrm 的作用与使用</h2><blockquote>
+<p>nrm(npm registry manager )是 npm 的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换</p>
+</blockquote>
+<h3 id="nrm-的安装"><a href="#nrm-的安装" class="headerlink" title="nrm 的安装"></a>nrm 的安装</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+
+<h3 id="nrm-命令"><a href="#nrm-命令" class="headerlink" title="nrm 命令"></a>nrm 命令</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nrm ls　#查看可用的源（有*号的表示当前所使用的源,以下&lt;registry&gt;表示源的名称）</span><br><span class="line">nrm use &lt;registry&gt; # 将npm下载源切换成指定的源</span><br><span class="line">nrm add &lt;registry&gt; &lt;url&gt; # 添加源，url为源的路径</span><br><span class="line">nrm del &lt;registry&gt; # 删除源</span><br><span class="line">nrm test &lt;registry&gt; # 测试源的响应时间，可以作为使用哪个源的参考</span><br><span class="line"></span><br><span class="line">nrm help　# 查看nrm帮助</span><br><span class="line">nrm home &lt;registry&gt;　# 跳转到指定源的官网</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果在你的网络不太理想或者受到其他网络限制导致不能使用 npm 原本的源进行下载时，nrm 就非常有用了，你只需要:</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nrm ls # 查看可用的源</span><br><span class="line">nrm use &lt;registry&gt;　# 切换到指定源</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/jin/" rel="prev" title="《晋朝大事年表》">
+                  <i class="fa fa-chevron-left"></i> 《晋朝大事年表》
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/nbc/" rel="next" title="《南北朝大事年表》">
+                  《南北朝大事年表》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caoysong</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/npm/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
