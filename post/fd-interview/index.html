@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2d3436"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#2d3436">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-barber-shop.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":true,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="浏览器中从输入网址到跳转显示页面经历了哪些事 首先，第一步肯定是 DNS 解析  DNS 解析：将域名解析成 IP 地址  读取浏览器 DNS 缓存:有缓存的话就会进行读取，没有的话就从系统也就是计算机的缓存去读取； 读取系统 DNS 缓存：有的话就读取，没有就会去路由去缓存中读取(前提是有路由器缓存，如果还没有就会去读取网络运行商的缓存) 读取路由器 DNS 缓存： 网络运营商的 DNS 缓存如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《前端面试百问》">
+<meta property="og:url" content="https://caoysong.gitee.io/post/fd-interview/index.html">
+<meta property="og:site_name" content="nagisa">
+<meta property="og:description" content="浏览器中从输入网址到跳转显示页面经历了哪些事 首先，第一步肯定是 DNS 解析  DNS 解析：将域名解析成 IP 地址  读取浏览器 DNS 缓存:有缓存的话就会进行读取，没有的话就从系统也就是计算机的缓存去读取； 读取系统 DNS 缓存：有的话就读取，没有就会去路由去缓存中读取(前提是有路由器缓存，如果还没有就会去读取网络运行商的缓存) 读取路由器 DNS 缓存： 网络运营商的 DNS 缓存如">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-01T19:38:15.000Z">
+<meta property="article:modified_time" content="2022-07-06T10:38:09.394Z">
+<meta property="article:author" content="caoysong">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://caoysong.gitee.io/post/fd-interview/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/fd-interview/","path":"post/fd-interview/","title":"《前端面试百问》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《前端面试百问》 | nagisa</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nagisa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
+      <img class="custom-logo-image" src="https://img.shields.io/badge/%E3%81%BF%E3%82%93%E3%81%AA-%E4%BB%8A%E6%97%A5%E3%82%82%E6%A5%BD%E3%81%97%E3%82%93%E3%81%A7%E3%81%AD-red" alt="nagisa">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a></li><li class="menu-item menu-item-音乐"><a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>音乐</a></li><li class="menu-item menu-item-追番"><a href="/zhuifan/" rel="section"><i class="fa fa-tv fa-fw"></i>追番</a></li><li class="menu-item menu-item-读书"><a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a></li><li class="menu-item menu-item-网站"><a href="/web/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>网站</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E4%BB%8E%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%88%B0%E8%B7%B3%E8%BD%AC%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B"><span class="nav-number">1.</span> <span class="nav-text">浏览器中从输入网址到跳转显示页面经历了哪些事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%8F%82%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D"><span class="nav-number">2.</span> <span class="nav-text">页面之间的传参有哪几种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">浏览器缓存和离线缓存有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9-this-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">对 this 的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">iframe 的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async-%E5%92%8C-promise-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">async 和 promise 的区别</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="caoysong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">caoysong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caoyus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caoyus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/caoyusong9527@163.com" title="E-Mail → caoyusong9527@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/fd-interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《前端面试百问》 | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《前端面试百问》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-02 03:38:15" itemprop="dateCreated datePublished" datetime="2020-07-02T03:38:15+08:00">2020-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="浏览器中从输入网址到跳转显示页面经历了哪些事"><a href="#浏览器中从输入网址到跳转显示页面经历了哪些事" class="headerlink" title="浏览器中从输入网址到跳转显示页面经历了哪些事"></a>浏览器中从输入网址到跳转显示页面经历了哪些事</h2><blockquote>
+<p>首先，第一步肯定是 DNS 解析</p>
+</blockquote>
+<p>DNS 解析：将域名解析成 IP 地址</p>
+<ul>
+<li>读取浏览器 DNS 缓存:有缓存的话就会进行读取，没有的话就从系统也就是计算机的缓存去读取；</li>
+<li>读取系统 DNS 缓存：有的话就读取，没有就会去路由去缓存中读取(前提是有路由器缓存，如果还没有就会去读取网络运行商的缓存)</li>
+<li>读取路由器 DNS 缓存：</li>
+<li>网络运营商的 DNS 缓存<br>如果上述都没有找到的话，他会去做递归搜索,如果还没有就是找不到对应的 Ip 地址，就会出错<span id="more"></span>
+<blockquote>
+<p>TCP 连接（和服务器建立连接）</p>
+</blockquote>
+</li>
+</ul>
+<p>第一次握手：浏览器发起，用来告诉服务器客户端将要发送请求；<br>第二次握手：服务器收到客户端想要连接的信号，验证后向客户端发送请求；<br>第三次握手：客户端接收到服务器发送的请求，确认后想服务器发送请求；<br>注：三次握手的原因是服务器在运行过程中回去处理很多很多的请求，如果是立马连接的话，可能会连接不上，为了保证通信，所以就有了服务器先确认是否能进行连接；</p>
+<blockquote>
+<p>发送请求：</p>
+</blockquote>
+<ul>
+<li>请求报文：HTTP 协议的通信内容</li>
+</ul>
+<blockquote>
+<p>接受响应：</p>
+</blockquote>
+<ul>
+<li>响应报文</li>
+</ul>
+<blockquote>
+<p>浏览器接受到服务器发送的数据来进行渲染页面：</p>
+</blockquote>
+<ul>
+<li>遇见 html 标记，浏览器会调用 HTML 解析器解析成 Token 并构建 DOM 树</li>
+<li>遇见 style 标记，浏览器会调用 CSS 解析器来处理 css 标记并创建 CSSDOM 树</li>
+<li>遇见 Script 标记，浏览器会调用 javascript 解析器来处理 js 代码(绑定事件，修改 DOM 树，CSSDOM 树)</li>
+<li>将 DOM 树和 CSSDOM 树合成一个渲染树；</li>
+<li>根据渲染来计算布局，计算每一个节点的几何信息（布局）；</li>
+<li>将各个节点的颜色绘制到屏幕上（渲染）；</li>
+</ul>
+<p>注：这几步不一定按顺序执行，如果 DOM 树或者 CSSDOM 树被修改了，可能会执行多次布局和渲染，往往实际页面中，这些步骤会被执行多次；</p>
+<blockquote>
+<p>断开连接（TCP 的四次挥手）</p>
+</blockquote>
+<ul>
+<li>第一次挥手：由浏览器发起的，告诉服务器所要（请求报文）已经接受完了，你准备关闭吧；</li>
+<li>第二次挥手：服务器发起告诉浏览器请求报文已经接收完了，并告诉浏览器他准备关闭了，你准备吧；</li>
+<li>第三次挥手：服务器发送请求告诉浏览器他内容（响应报文）发送完了，准备关闭，让浏览器准备断开连接</li>
+<li>第四次挥手：告诉服务器内容接受完了，我准备关闭（响应报文），你服务器也准备关闭吧</li>
+</ul>
+<p><code>注：一般是服务器先关然后浏览器关闭</code></p>
+<h2 id="页面之间的传参有哪几种"><a href="#页面之间的传参有哪几种" class="headerlink" title="页面之间的传参有哪几种"></a>页面之间的传参有哪几种</h2><ol>
+<li>H5 的数据存储 localStorage 和 sessionStorage;</li>
+<li>通过 url 来传参，参数拼接在地址栏，通过 window.location.search()来获取参数；</li>
+<li>通过 cookie 也是可以的，但由于他支持的 api 较少，所以很少用他；<br>(主要是每次请求都要带上 cookie 的信息，增加了流量的消耗；另外，cookie 使用的是明文传输，如果被人拦截了就会获取到 session 的所有信息，有一定的安全隐患；还有就是 cookie 数量和长度的限制，每个 domain 最多只能有 20 条 cookie,每个 cookie 的长度不能超过 4K,否则会被截掉)</li>
+</ol>
+<h2 id="浏览器缓存和离线缓存有什么区别"><a href="#浏览器缓存和离线缓存有什么区别" class="headerlink" title="浏览器缓存和离线缓存有什么区别"></a>浏览器缓存和离线缓存有什么区别</h2><ol>
+<li><p>离线缓存是 H5 提供使用的功能，让应用程序可以获取本地的网站内容，提高网站的性能，增加用户体验，这个是要我们手动去操作的；(离线缓存是通过 manifast 文件来管理的，需要服务器端的支持，不同的服务器端的开启方式是不同的)</p>
+</li>
+<li><p>浏览器缓存：浏览器的缓存他会对相同的内容进行缓存，以提高访问的速度，这是浏览器自身的机制所导致的；</p>
+</li>
+</ol>
+<blockquote>
+<p>他们之间的区别</p>
+</blockquote>
+<ul>
+<li><p>离线缓存为整个 web 提供服务,浏览器只是缓存单个页面;</p>
+</li>
+<li><p>离线缓存可以指定需要缓存的文件和需要在线浏览的文件,浏览器是没法指定的;</p>
+</li>
+<li><p>离线缓存可以动态通知用户进行更新;</p>
+</li>
+</ul>
+<h2 id="对-this-的理解"><a href="#对-this-的理解" class="headerlink" title="对 this 的理解"></a>对 this 的理解</h2><p><code>this</code>是 js 中的关键字,只存在于函数的内部，严格模式下 this 指向是 <code>undefined</code><br>原则上是谁调用就指向谁，只有调用才有 this，所以 this 的指向有四种情况：</p>
+<ul>
+<li>函数调用模式</li>
+</ul>
+<p>this 指向 widow；</p>
+<ul>
+<li>方法调用模式</li>
+</ul>
+<p>谁调用就指向谁</p>
+<ul>
+<li>构造函数调用模式</li>
+</ul>
+<p>this 指向实例；</p>
+<ul>
+<li>格式上下文</li>
+</ul>
+<ol>
+<li>call 的后面传入的参数时字符串形式参数;</li>
+<li>apply 是以数组方式传入;</li>
+<li>bind 返回新的函数,并绑定死 this 指向;</li>
+</ol>
+<h2 id="iframe-的优缺点"><a href="#iframe-的优缺点" class="headerlink" title="iframe 的优缺点"></a>iframe 的优缺点</h2><blockquote>
+<p>iframe 作为嵌入式框架，嵌入式框架和框架网页类似，他可以把一个网页的框架和内容嵌入现有的网页里；</p>
+</blockquote>
+<ul>
+<li>iframe 的优点</li>
+</ul>
+<ol>
+<li>能够原封不动的将嵌入的网页展示出来；</li>
+<li>如果有多个网页引用 iframe，那么只需要修改 iframe 的内容就可以实现调用每一个网页内容进行更改，方便快捷；</li>
+<li>网页如果统一风格，头部和版本都是一样的，就可以写成一个网页，用 iframe 来嵌套，可以增加代码的复用率；</li>
+<li>如果遇到加载缓慢的第三方的内容比如说图标活着广告，这些问题都可以用 iframe 来解决；</li>
+<li>重载页面的时候不需要加载整个页面，只需要重载页面的一个框架，从而减少了一些数据的传输，提升了页面的加载速度，从而提升了用户体验；</li>
+</ol>
+<ul>
+<li>iframe 的缺点</li>
+</ul>
+<ol>
+<li>页面的样式调试比较麻烦，可能会出现多个滚动条；</li>
+<li>浏览器的后退按钮会失效；</li>
+<li>过多和增加服务器的 http 请求；</li>
+<li>小型的移动设备无法完全显示框架；</li>
+<li>会产生多个页面，不易管理；</li>
+<li>不容易打印；</li>
+<li>代码复杂，无法被一些搜索引擎解读，不利于 SEO;</li>
+</ol>
+<h2 id="async-和-promise-的区别"><a href="#async-和-promise-的区别" class="headerlink" title="async 和 promise 的区别"></a>async 和 promise 的区别</h2><ol>
+<li>async 是函数前的一个关键字，await 关键字只能使用在 async 定义的函数中，任何一个 async 函数会隐式返回一个 promise，并且 promise resolve 的值是 return 的返回值；<br>2。 promise 的写法比回调函数的写法大大改进，但是一眼看上去代码全是 promise API ,什么.then .catch 啥的，操作本身的语义更不容易看出来；</li>
+<li>async 配合 promise 语法让 promise 从异步变成了同步，await 后的代码必须执行完了才会进行下一步操作</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/type/" rel="prev" title="《比typeof运算符更准确的类型判断》">
+                  <i class="fa fa-chevron-left"></i> 《比typeof运算符更准确的类型判断》
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/xnlb/" rel="next" title="《如何以长列表的形式显示上万条数据》">
+                  《如何以长列表的形式显示上万条数据》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caoysong</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/fd-interview/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
