@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2d3436"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#2d3436">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-barber-shop.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":true,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="TS 是 JS 的超集，所以 JS 基础的类型都包含在内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《TypeScript学习--基本类型和任意类型》">
+<meta property="og:url" content="https://caoysong.gitee.io/post/ts-1/index.html">
+<meta property="og:site_name" content="nagisa">
+<meta property="og:description" content="TS 是 JS 的超集，所以 JS 基础的类型都包含在内">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-01T19:38:15.000Z">
+<meta property="article:modified_time" content="2022-07-08T11:38:17.524Z">
+<meta property="article:author" content="caoysong">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="typescript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://caoysong.gitee.io/post/ts-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/ts-1/","path":"post/ts-1/","title":"《TypeScript学习--基本类型和任意类型》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《TypeScript学习--基本类型和任意类型》 | nagisa</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nagisa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
+      <img class="custom-logo-image" src="https://img.shields.io/badge/%E3%81%BF%E3%82%93%E3%81%AA-%E4%BB%8A%E6%97%A5%E3%82%82%E6%A5%BD%E3%81%97%E3%82%93%E3%81%A7%E3%81%AD-red" alt="nagisa">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">35</span></a></li><li class="menu-item menu-item-追番"><a href="/zhuifan/" rel="section"><i class="fa fa-tv fa-fw"></i>追番</a></li><li class="menu-item menu-item-读书"><a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a></li><li class="menu-item menu-item-网站"><a href="/web/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>网站</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">起步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">数字类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">空值类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">任意类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Any-%E7%B1%BB%E5%9E%8B-%E5%92%8C-unknown-%E9%A1%B6%E7%BA%A7%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">Any 类型 和 unknown 顶级类型</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="caoysong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">caoysong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caoyus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caoyus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/caoyusong9527@163.com" title="E-Mail → caoyusong9527@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/ts-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《TypeScript学习--基本类型和任意类型》 | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《TypeScript学习--基本类型和任意类型》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-02 03:38:15" itemprop="dateCreated datePublished" datetime="2021-03-02T03:38:15+08:00">2021-03-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/typescript/" itemprop="url" rel="index"><span itemprop="name">typescript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>TS 是 JS 的超集，所以 JS 基础的类型都包含在内</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><blockquote>
+<p>安装 typescript</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript <span class="literal">-g</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h2><blockquote>
+<p>基础类型：Boolean、Number、String、null、undefined 以及 ES6 的 Symbol 和 ES10 的 BigInt。</p>
+</blockquote>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">n</span>: number = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">s</span>: string = <span class="string">`nagisa<span class="subst">$&#123;n&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">notANumber</span>: number = <span class="title class_">NaN</span>; <span class="comment">//Nan</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">num</span>: number = <span class="number">123</span>; <span class="comment">//普通数字</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">infinityNumber</span>: number = <span class="title class_">Infinity</span>; <span class="comment">//无穷大</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">decimal</span>: number = <span class="number">6</span>; <span class="comment">//十进制</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">hex</span>: number = <span class="number">0xf00d</span>; <span class="comment">//十六进制</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">binary</span>: number = <span class="number">0b1010</span>; <span class="comment">//二进制</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">octal</span>: number = <span class="number">0o744</span>; <span class="comment">//八进制s</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">createdBoolean</span>: boolean = <span class="keyword">new</span> <span class="title class_">Boolean</span>(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//这样会报错 应为事实上 new Boolean() 返回的是一个 Boolean 对象</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事实上 new Boolean() 返回的是一个 Boolean 对象 需要改成</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">createdBoolean</span>: <span class="title class_">Boolean</span> = <span class="keyword">new</span> <span class="title class_">Boolean</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">booleand</span>: boolean = <span class="literal">true</span>; <span class="comment">//可以直接使用布尔值</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">booleand2</span>: boolean = <span class="title class_">Boolean</span>(<span class="number">1</span>); <span class="comment">//也可以通过函数返回布尔值</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="空值类型"><a href="#空值类型" class="headerlink" title="空值类型"></a>空值类型</h3><blockquote>
+<p>JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">voidFn</span>(<span class="params"></span>): <span class="keyword">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;test void&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>void 类型的用法，主要是用在我们不希望调用者关心函数返回值的情况下，比如通常的异步回调函数</p>
+</blockquote>
+<p><code>void</code> 也可以定义 <code>undefined</code> 和 <code>null </code>类型</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">u</span>: <span class="keyword">void</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">n</span>: <span class="keyword">void</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>void 和 undefined 和 null 最大的区别</p>
+</blockquote>
+<p>与<code>void </code>的区别是，<code>undefined </code>和 <code>null </code>是所有类型的子类型。也就是说 <code>undefined </code>类型的变量，可以赋值给 <code>string</code>类型的变量：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样写会报错 void类型不可以分给其他类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">test</span>: <span class="keyword">void</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">num2</span>: string = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">num2 = test;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样是没问题的</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">test</span>: <span class="literal">null</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">num2</span>: string = <span class="string">&quot;1&quot;</span>;</span><br><span class="line"></span><br><span class="line">num2 = test;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者这样的</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">test</span>: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">num2</span>: string = <span class="string">&quot;1&quot;</span>;</span><br><span class="line"></span><br><span class="line">num2 = test;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>TIPS 注意：<br>如果你配置了 <code>tsconfig.json </code>开启了严格模式,<code>null</code>不能 赋予<code>void</code>类型</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;compilerOptions&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="任意类型"><a href="#任意类型" class="headerlink" title="任意类型"></a>任意类型</h2><h3 id="Any-类型-和-unknown-顶级类型"><a href="#Any-类型-和-unknown-顶级类型" class="headerlink" title="Any 类型 和 unknown 顶级类型"></a>Any 类型 和 unknown 顶级类型</h3><ol>
+<li>没有强制限定哪种类型，随时切换类型都可以 我们可以对 any 进行任何操作，不需要检查类型</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">anys</span>: any = <span class="number">123</span>;</span><br><span class="line">anys = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">anys = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>声明变量的时候没有指定任意类型默认为 any</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> anys;</span><br><span class="line">anys = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">anys = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>弊端如果使用 any 就失去了 TS 类型检测的作用</p>
+</li>
+<li><p>TypeScript 3.0 中引入的 unknown 类型也被认为是 top type ，但它更安全。与 any 一样，所有类型都可以分配给 unknown</p>
+</li>
+</ol>
+<blockquote>
+<p>unknow unknow 类型比 any 更加严格当你要使用 any 的时候可以尝试使用 unknow</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//unknown 可以定义任何类型的值</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">value</span>: unknown;</span><br><span class="line"></span><br><span class="line">value = <span class="literal">true</span>; <span class="comment">// OK</span></span><br><span class="line">value = <span class="number">42</span>; <span class="comment">// OK</span></span><br><span class="line">value = <span class="string">&quot;Hello World&quot;</span>; <span class="comment">// OK</span></span><br><span class="line">value = []; <span class="comment">// OK</span></span><br><span class="line">value = &#123;&#125;; <span class="comment">// OK</span></span><br><span class="line">value = <span class="literal">null</span>; <span class="comment">// OK</span></span><br><span class="line">value = <span class="literal">undefined</span>; <span class="comment">// OK</span></span><br><span class="line">value = <span class="title class_">Symbol</span>(<span class="string">&quot;type&quot;</span>); <span class="comment">// OK</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这样写会报错unknow类型不能作为子类型只能作为父类型 any可以作为父类型和子类型</span></span><br><span class="line"><span class="comment">//unknown类型不能赋值给其他类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">names</span>: unknown = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">names2</span>: string = names;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这样就没问题 any类型是可以的</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">names</span>: any = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">names2</span>: string = names;</span><br><span class="line"></span><br><span class="line"><span class="comment">//unknown可赋值对象只有unknown 和 any</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">bbb</span>: unknown = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">aaa</span>: any = <span class="string">&quot;456&quot;</span>;</span><br><span class="line"></span><br><span class="line">aaa = bbb;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>区别 2</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果是any类型在对象没有这个属性的时候还在获取是不会报错的</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj</span>:any = &#123;<span class="attr">b</span>:<span class="number">1</span>&#125;</span><br><span class="line">obj.<span class="property">a</span></span><br><span class="line">如果是unknow 是不能调用属性和方法</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj</span>:unknown = &#123;<span class="attr">b</span>:<span class="number">1</span>,<span class="attr">ccc</span>:():<span class="function"><span class="params">number</span>=&gt;</span><span class="number">213</span>&#125;</span><br><span class="line">obj.<span class="property">b</span></span><br><span class="line">obj.<span class="title function_">ccc</span>()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/typescript/" rel="tag"><i class="fa fa-tag"></i> typescript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/code-fragment/" rel="prev" title="《那些比较有用的代码片段》">
+                  <i class="fa fa-chevron-left"></i> 《那些比较有用的代码片段》
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/ts-2/" rel="next" title="《TypeScript学习--接口和对象以及数组类型》">
+                  《TypeScript学习--接口和对象以及数组类型》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caoysong</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/ts-1/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
