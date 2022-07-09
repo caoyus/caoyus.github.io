@@ -20,21 +20,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-barber-shop.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":true,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":true,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Document                             * {         margin: 0;         padding: 0;         box-sizing: border-box;       }       #music_wrap {         margin: auto;         margin">
+    <meta name="description" content="Document                     * {         margin: 0;         padding: 0;         border-sizing: border-box;     }                                    const ap &#x3D; new APlayer({">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的歌单">
 <meta property="og:url" content="https://caoysong.gitee.io/music/index.html">
 <meta property="og:site_name" content="nagisa">
-<meta property="og:description" content="Document                             * {         margin: 0;         padding: 0;         box-sizing: border-box;       }       #music_wrap {         margin: auto;         margin">
+<meta property="og:description" content="Document                     * {         margin: 0;         padding: 0;         border-sizing: border-box;     }                                    const ap &#x3D; new APlayer({">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://caoysong.gitee.io/images/music/sideimg.png">
 <meta property="article:published_time" content="2022-07-09T11:36:46.000Z">
-<meta property="article:modified_time" content="2022-07-09T11:45:31.796Z">
+<meta property="article:modified_time" content="2022-07-09T14:04:08.923Z">
 <meta property="article:author" content="caoysong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://caoysong.gitee.io/images/music/sideimg.png">
 
 
 <link rel="canonical" href="https://caoysong.gitee.io/music/">
@@ -58,6 +56,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+
   <div class="headband"></div>
 
   <main class="main">
@@ -79,7 +78,6 @@
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
-      <img class="custom-logo-image" src="https://img.shields.io/badge/%E3%81%BF%E3%82%93%E3%81%AA-%E4%BB%8A%E6%97%A5%E3%82%82%E6%A5%BD%E3%81%97%E3%82%93%E3%81%A7%E3%81%AD-red" alt="nagisa">
   </div>
 
   <div class="site-nav-right">
@@ -211,54 +209,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" ></script>
     <link
+      href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.1/APlayer.min.css"
       rel="stylesheet"
-      href="http://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"
     />
-    <style>
-      * {
+    <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.1/APlayer.min.js"></script>
+  </head>
+  <style>
+    * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-      }
-      #music_wrap {
-        margin: auto;
-        margin-top: 20px;
-        width: 100%;
-        height: 350px;
-        display: flex;
-      }
-      .left_cover {
-        flex: 2;
-        height: 100%;
-      }
-     .left_cover img {
-        height: 100%;
-      }
-      .right_music {
-        flex: 4;
-        height: 100%;
-      }
-    </style>
-  </head>
+        border-sizing: border-box;
+    }
+  </style>
   <body>
-    <div id="music_wrap">
-      <div class="left_cover">
-        <img src="../images/music/sideimg.png" alt="" />
-      </div>
-      <div class="right_music">
-        <meting-js
-          server="netease"
-          type="playlist"
-          id="7514598678"
-          fixed:"true"
-        ></meting-js>
-      </div>
+    <div class="container">   
+    <div id="aplayer"></div>
     </div>
+    <script>
+      const ap = new APlayer({
+        container: document.getElementById("aplayer"),
+        fixed: true,
+        autoplay: false,
+        audio: [
+          {
+            name: "Lemon",
+            artist: "米津玄师",
+            url: "https://www.ytmp3.cn/down/75600.mp3",
+            cover:
+              "https://img1.kuwo.cn/star/albumcover/500/27/96/2001854924.jpg",
+          },
+          {
+            name: "未闻花名",
+            artist: "V.A",
+            url: "https://www.ytmp3.cn/down/48499.mp3",
+            cover:
+              "https://img1.kuwo.cn/star/starheads/500/72/93/2802714602.jpg",
+          },
+          {
+            name: "白金disco",
+            artist: "坂口裕香",
+            url: " http://music.163.com/song/media/outer/url?id=399367220.mp3",
+            cover:
+              "https://img1.kuwo.cn/star/starheads/500/72/93/2802714602.jpg",
+          },
+          {
+            name: "大丈夫",
+            artist: "wacci",
+            url: " http://music.163.com/song/media/outer/url?id=428203967.mp3",
+            cover:
+              "https://img1.kuwo.cn/star/starheads/500/72/93/2802714602.jpg",
+          },
+          {
+            name: "泣き顔スマイル",
+            artist: "hinaco",
+            url: " http://music.163.com/song/media/outer/url?id=557545.mp3",
+            cover:
+              "https://p3.music.126.net/gn22m_UWiHwgGvhy4kK7xw==/18653214767054818.jpg?param=34y34",
+          },
+          {
+            name: "FC忍者龙剑传3 4-1.REMIX",
+            artist: "西诺Sunny",
+            url: " http://music.163.com/song/media/outer/url?id=504537459.mp3",
+            cover:
+              "http://p1.music.126.net/_zm3oJSL6P1SkaZPipa9fQ==/109951163020767881.jpg?param=130y130",
+          },
+        ],
+      });
+    </script>
   </body>
-
 </html>
 
       </div>
@@ -292,9 +311,8 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
 
