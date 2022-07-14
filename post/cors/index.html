@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2d3436"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#2d3436">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-barber-shop.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="所谓的跨域是一种浏览器的安全机制导致的，也就是同源策略，如果出现非同源（协议、域名、端口号都相同，只要有一个不相同，那么都是非同源），浏览器就会形成跨域，比如说我们常见的一个端口去访问另一个端口的资源时，就会发出跨域请求，注意的是跨域是浏览器同源策略导致的，服务器与服务器之间没有跨域这个说法。  解决跨域的方法有很多，比如前端的代理服务器访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《前后端解决跨域问题》">
+<meta property="og:url" content="https://caoysong.gitee.io/post/cors/index.html">
+<meta property="og:site_name" content="nagisa">
+<meta property="og:description" content="所谓的跨域是一种浏览器的安全机制导致的，也就是同源策略，如果出现非同源（协议、域名、端口号都相同，只要有一个不相同，那么都是非同源），浏览器就会形成跨域，比如说我们常见的一个端口去访问另一个端口的资源时，就会发出跨域请求，注意的是跨域是浏览器同源策略导致的，服务器与服务器之间没有跨域这个说法。  解决跨域的方法有很多，比如前端的代理服务器访问">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-01T19:38:15.000Z">
+<meta property="article:modified_time" content="2022-07-14T12:00:16.856Z">
+<meta property="article:author" content="caoysong">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://caoysong.gitee.io/post/cors/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/cors/","path":"post/cors/","title":"《前后端解决跨域问题》"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《前后端解决跨域问题》 | nagisa</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nagisa</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不以物喜，不以己悲</p>
+      <img class="custom-logo-image" src="https://img.shields.io/badge/%E3%81%BF%E3%82%93%E3%81%AA-%E4%BB%8A%E6%97%A5%E3%82%82%E6%A5%BD%E3%81%97%E3%82%93%E3%81%A7%E3%81%AD-red" alt="nagisa">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-音乐"><a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>音乐</a></li><li class="menu-item menu-item-追番"><a href="/zhuifan/" rel="section"><i class="fa fa-tv fa-fw"></i>追番</a></li><li class="menu-item menu-item-读书"><a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a></li><li class="menu-item menu-item-网站"><a href="/web/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>网站</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP-%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">JSONP 方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-%E4%B8%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A3%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Vue 中服务器代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Express-%E4%B8%AD%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">Express 中解决跨域问题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="caoysong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">caoysong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caoyus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caoyus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/caoyusong9527@163.com" title="E-Mail → caoyusong9527@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/cors/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《前后端解决跨域问题》 | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《前后端解决跨域问题》
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-02 03:38:15" itemprop="dateCreated datePublished" datetime="2020-11-02T03:38:15+08:00">2020-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>所谓的跨域是一种浏览器的安全机制导致的，也就是同源策略，如果出现非同源（协议、域名、端口号都相同，只要有一个不相同，那么都是非同源），浏览器就会形成跨域，比如说我们常见的一个端口去访问另一个端口的资源时，就会发出跨域请求，注意的是跨域是浏览器同源策略导致的，服务器与服务器之间没有跨域这个说法。</p>
+</blockquote>
+<p>解决跨域的方法有很多，比如前端的代理服务器访问</p>
+<span id="more"></span>
+
+<h2 id="JSONP-方案"><a href="#JSONP-方案" class="headerlink" title="JSONP 方案"></a>JSONP 方案</h2><blockquote>
+<p>使用 jsonp 实现，网页通过 script 标签去向服务器请求 json 数据，服务器收到请求后将数据放在一个指定名字的回调函数的参数里面传输给前端。</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;http://www.test.com/getData?callback=getData&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">// 向服务器test.com发出请求，该请求的查询字符串有一个callback参数，用来指定回调函数的名字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理服务器返回回调函数的数据</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 服务器返回的数据会放到回调函数里面</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params">res</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 处理获得的数据</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Vue-中服务器代理"><a href="#Vue-中服务器代理" class="headerlink" title="Vue 中服务器代理"></a>Vue 中服务器代理</h2><blockquote>
+<p>在 vue 的配置文件中：</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="string">&quot;9595&quot;</span>,</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="comment">//配置跨域</span></span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;https://xxxxxxxx&quot;</span>, <span class="comment">//这里后台的地址模拟的;应该填写你们真实的后台接口</span></span><br><span class="line">        <span class="attr">changOrigin</span>: <span class="literal">true</span>, <span class="comment">//允许跨域</span></span><br><span class="line">        <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">          <span class="comment">/* 重写路径，当我们在浏览器中看到请求的地址为：http://localhost:8080/api/core/getData/userInfo 时</span></span><br><span class="line"><span class="comment">                实际上访问的地址是：http://121.121.67.254:8185/core/getData/userInfo,因为重写了 /api</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">          <span class="string">&quot;^/api&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在 configs.js 文件中，添加下面判断开发环境还是生产环境。更改 baseUrl</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> noAuthAxios = axios.<span class="title function_">create</span>();</span><br><span class="line"><span class="keyword">const</span> authedAxios = axios.<span class="title function_">create</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isPro = <span class="title class_">Object</span>.<span class="title function_">is</span>(process.<span class="property">env</span>.<span class="property">NODE_ENV</span>, <span class="string">&quot;production&quot;</span>); <span class="comment">//判断是否是生产环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// authedAxios.defaults.baseURL = process.env.VUE_APP_BASE_URL</span></span><br><span class="line">authedAxios.<span class="property">defaults</span>.<span class="property">baseURL</span> = isPro ? process.<span class="property">env</span>.<span class="property">VUE_APP_BASE_URL</span> : <span class="string">&quot;/api&quot;</span>; <span class="comment">//如果是生产环境，则使用接口地址，否则使用代理地址</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Express-中解决跨域问题"><a href="#Express-中解决跨域问题" class="headerlink" title="Express 中解决跨域问题"></a>Express 中解决跨域问题</h2><ul>
+<li>在 api 设置中写入：</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">all</span>(<span class="string">&quot;*&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;PUT, POST, GET, DELETE, OPTIONS&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件 cors</li>
+</ul>
+<p>引入插件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入跨域插件</span></span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>);</span><br><span class="line"><span class="comment">// 解决跨域</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/login-process/" rel="prev" title="《前端登录流程》">
+                  <i class="fa fa-chevron-left"></i> 《前端登录流程》
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/code-fragment/" rel="next" title="《那些比较有用的代码片段》">
+                  《那些比较有用的代码片段》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-at"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caoysong</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/cors/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
