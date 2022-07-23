@@ -22,28 +22,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"caoysong.gitee.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"right","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#2d3436","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}}},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeInDown","post_header":"fadeInUp","post_body":"fadeInDown","coll_header":"fadeInUp","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="曾经去做一个采访，一户东北人家，老头说老太有外遇，我们过去了解情况，老太太否认这个情况，认为老头在埋汰他，最后老头急了，带我们去里屋看了看，我看到了里屋卧室床上有五六个婴儿，但是长的又不像孩子，像狗；">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《一个梦》">
-<meta property="og:url" content="https://caoysong.gitee.io/post/yomie/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="深入了解ES6的Generator">
+<meta property="og:url" content="https://caoysong.gitee.io/post/generator/index.html">
 <meta property="og:site_name" content="nagisa">
-<meta property="og:description" content="曾经去做一个采访，一户东北人家，老头说老太有外遇，我们过去了解情况，老太太否认这个情况，认为老头在埋汰他，最后老头急了，带我们去里屋看了看，我看到了里屋卧室床上有五六个婴儿，但是长的又不像孩子，像狗；">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-15T19:38:15.000Z">
-<meta property="article:modified_time" content="2022-07-10T22:59:58.030Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ef209db5e046bee4f98bf3a0ee2cc246.png">
+<meta property="article:published_time" content="2022-06-13T19:38:15.000Z">
+<meta property="article:modified_time" content="2022-07-22T11:09:46.448Z">
 <meta property="article:author" content="caoysong">
-<meta property="article:tag" content="其他">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/ef209db5e046bee4f98bf3a0ee2cc246.png">
 
 
-<link rel="canonical" href="https://caoysong.gitee.io/post/yomie/">
+<link rel="canonical" href="https://caoysong.gitee.io/post/generator/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/yomie/","path":"post/yomie/","title":"《一个梦》"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://caoysong.gitee.io/post/generator/","path":"post/generator/","title":"深入了解ES6的Generator"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>《一个梦》 | nagisa</title>
+<title>深入了解ES6的Generator | nagisa</title>
   
 
 
@@ -108,7 +109,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -121,6 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Generator"><span class="nav-number">1.</span> <span class="nav-text">什么是 Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-%E5%A6%82%E4%BD%95%E8%AE%A9%E9%81%8D%E5%8E%86%E5%81%9C%E4%B8%8B%E6%9D%A5"><span class="nav-number">2.</span> <span class="nav-text">ES6 如何让遍历停下来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +196,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/yomie/">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/generator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -207,12 +209,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="《一个梦》 | nagisa">
+      <meta itemprop="name" content="深入了解ES6的Generator | nagisa">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《一个梦》
+          深入了解ES6的Generator
         </h1>
 
         <div class="post-meta-container">
@@ -223,7 +225,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-12-16 03:38:15" itemprop="dateCreated datePublished" datetime="2021-12-16T03:38:15+08:00">2021-12-16</time>
+      <time title="创建时间：2022-06-14 03:38:15" itemprop="dateCreated datePublished" datetime="2022-06-14T03:38:15+08:00">2022-06-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -231,7 +233,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
         </span>
     </span>
 
@@ -245,25 +251,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><span style="color:#2980b9; font-size:30px">曾</span>经去做一个采访，一户东北人家，老头说老太有外遇，我们过去了解情况，老太太否认这个情况，认为老头在埋汰他，最后老头急了，带我们去里屋看了看，我看到了里屋卧室床上有五六个婴儿，但是长的又不像孩子，像狗；</p>
+        <p><img src="https://img-blog.csdnimg.cn/img_convert/ef209db5e046bee4f98bf3a0ee2cc246.png"></p>
 <span id="more"></span>
 
-<p>老头说是老太生的，两人吵起来了，最后老太承认在去年的时候偷人了，我在采访结束时在他家偷偷装了个监听器，就在我们走的路上，我折返回去了，因为他听到了两个老人的对话，老人说这下我应该火了吧。</p>
-<p>于是我打电话给那老太太说临走时留了一箱火腿肠，老太说不要，硬是要还回去，我说这是给你们的请务必收下，不一会儿就听到老头说那火腿肠喂狗，之后就听到里屋一群狗汪汪的叫，我才知道那些孩子是狗装的。</p>
-<p>于是我就一个人回去找他证实，屋里就老头一人，老头说自己想火和老太演了这一出，知道真相后的我往回走，在楼梯上碰到了老太，老太说我知道的太多了，说要杀我灭口，我吓得用脚一踹，由于楼梯是环形，没有护栏，老太直接掉到了一楼，之后我不慌不忙的下楼了，楼下已聚了好多人看热闹，我默默走开了。</p>
-<p>为了赶上朋友，我从一栋楼里穿过，我上了二楼，那个楼还在建，我在二楼看到了朋友，他被绑起来了，之后出来三个人，一个女的，两个男的，女的说是她那个老太的女儿，说是我杀了他妈，所以要杀了我，我当时想跑，突然那女的嗖地一下跑到我旁边把我摁到墙上，掏出一把刀插进了我右边琵琶骨，我能感觉到痛，之后朋友见状想打破窗户逃跑，还没跑掉头就被削了。</p>
-<p>就在危难关头，我也不知道哪里来的枪，然后杀了那两个男的，此时女的又拿出一把刀插进了我的腰部，我痛得大叫，然后踢开他，爬到了窗户，窗户外面有楼梯，我顺着楼梯一直跑到了楼顶，然后特么又看到那个女的，我被逼的从楼顶跳下来，当时有下坠的感觉，持续很久，掉到地上我嚷着有人杀我，正好附近有警察，我就和他们说明了情况。</p>
-<p>我被路人簇拥着，然后我被保护起来了，那里我也不知道是什么地方，反正是一个封闭的空间，被砖头围起来的很高，顶上是木板封住的，两边各留一个小口通风，我感觉安全极了，里面有好多人，还有某个明星，我问她成为明星有什么感受，她说会有花不完的钱，我就说我们中国的女孩子太可怜，不敢大胆去做，当时我特么看到我朋友也在里面，他不是死了么……</p>
-<p>突然顶上有动静，是女的来了，还带了一帮人，她说我是逃不掉的，说她和警察局长是串通好的，我碎了她一口，然后那女的拿枪一直朝里面扫射，我踹开了围墙，拉着那个明星就跑，我朋友跟在后面，出来时发现自己其实在之前那个在建的大厦里，我和他们躲到了一个夹层里，那女的随后追来了，朋友突然探出头来挑衅他们，说来打我呀之类的话，我听了立马从旁边的窗户逃走了，朋友被那女的砍断了手脚，死在了那里,这可是他第二次死了。</p>
-<p>我逃出去过后一直跑，直到没看到有人跟着我，我跑到了人群里，人群里有一个魁梧的大叔，只穿着一条短裤，从屁股后面掏出一挺狙击步枪给我，说叫我找个地方躲起来，不要大声呼吸，我特么跑着跑着跑到了郊区的一所老破屋里躲了起来，趴在地上拿着狙击枪一直警惕着，突然后面有人那注射器扎进了我的腰部，酸痛酸痛的，原来是一帮警察，说我杀人了，我又被带到了那个在建的大厦里。</p>
-<p>那个女的又出现了，说我差点杀了她，我说你捅了我好几刀，刀上都是你指纹，然后警察拿出那把刀，说上面是我指纹，我听完想着反正他们是一伙的，跟他们争也没用，于是我又从窗口跳了下去，来到了大街上，走到那个老太太住的居民楼附近，发现我朋友倒在地上，显然他这次是彻底死了，然后我就骂来往的路人为什么没人打 120。</p>
-<p>我也没管我朋友一直走到了老太住的那栋楼楼下，楼下我看到一个担架，一个护士，然后旁边有一具尸体被蒙上了布，我看了看护士，是那个明星，护士说是一个老太太跳楼死了，我揭开那个布，是那个老太太，然后我跑到了他家里，看到他家里有头大象，在浴室里面，然后卧室有五六条狗，一个个被被子裹得紧紧的，我跑到楼下问那个护士，为啥楼上有大象，护士露出阴笑，说我爸就是大象，突然一阵风吹过，把盖着尸体的布给吹了，我朝那一看，这哪是老太尸体呀，这是一直追我女那个女的尸体，而且只有半截，我看了看护士，然后问她你是不是老太太的女儿，她骂了我，我就问她那个死了的老太太呢？</p>
-<p>护士说什么老太太呀，我就有点疑惑了，感觉这护士也是坏的，我就折身溜走了。</p>
-<p>我还是走到了那个郊区，发现我之前躲得那个房子不见了，我踩了一脚的泥巴，越走脚越重，然后看到对面有一户人家，有个小院子，院子里面有竹子，竹子旁边有池塘，我推门进去了，我想着这是不是明朝时期的房子，但还是进去了，屋里点着蜡烛，然后从偏房里出来一个妙龄少女，穿着古代的服饰，看到那个少女我嘴里忍不住蹦出两个字，奶奶！</p>
-<p>那女子拉我进里屋，我心里很温暖，宽慰，舒服极了，我流着泪和她说了这段时候被人追杀的事，他听完板住了脸，问我为什么杀人，我说我没杀人啊，我怎么说那女子都不信，然后我掀起自己的上衣，给她看了我身上的伤，发现自己腰上有个大窟窿，那女子把手伸了进去，我一阵酸痛，我把她手拨开，说那个老太太不是我杀的，我把她家里有大象的事都告诉了她，还有就是有个女的一直追杀我，女子听了叹了口气，说那个女的是可怜人，我听的一头雾水，女子说那个女的其实现在不是人了，女子说那女的是个十八线明星，被人害死在了家中，我说那她为什么一直追杀我，女子说你那箱火腿肠哪里来的，我说我在那个在建的楼下捡到的，女子说那个肠就是她的肉做的，你不应该给那个老太太家狗吃，我说你别吓我哦，女子阴笑了一下，我头皮发麻，想跑，但是脚不听使唤。</p>
-<p>突然从门外走进来那个老太，那张脸上眼珠都爆出来了，极其恐怖，我想叫叫不出来，我问那个女子老太太为什么在这，她笑着说因为我也在这呀，只见女子脱了衣服，特么是一只狗，它还说话了，说吃了那个火腿肠就能说话了，它说我那火腿肠让那老头变成了大象，它现在要为老头报仇，我听完想溜了出去，却被扯的衣服一件不剩。</p>
-<p>然后我发现自己在自己老家，看着电视，电视里面刚刚放的就是我刚才经历的，此时是夏天，我光着膀子，很瘦，我心里想我终于减肥成功了，我躺在沙发上，突然我身后有个人给我一把抱住，是那个护士，我没有怕，因为刚刚经历的一切是自己看的电影，我还感觉拍得不错，心里想着这个豆瓣评分应该很高，她问我中午吃饭了没，我说没有，随后他把一些饭菜端到了我身边的小桌上，看起来很丰盛，我吃着吃着感觉菜不好吃，很苦，这明明是鸡腿啥的为啥是苦的呢，然后发现自己手上拿的鸡腿是一根火腿肠，我头都麻了，突然我感觉腰部酸痛，护士一把匕首扎进了我的腰里……</p>
+<h2 id="什么是-Generator"><a href="#什么是-Generator" class="headerlink" title="什么是 Generator"></a>什么是 Generator</h2><blockquote>
+<p>Generator 是用来控制循环流程，主要是解决异步编程嵌套层级较深的问题。</p>
+</blockquote>
+<h2 id="ES6-如何让遍历停下来"><a href="#ES6-如何让遍历停下来" class="headerlink" title="ES6 如何让遍历停下来"></a>ES6 如何让遍历停下来</h2><p>ES5 中循环一旦执行就无法停止；</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">loop</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">loop</span>();</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
 
+<p>而使用 Generator 可以将执行的循环停下来，步骤如下；</p>
+<ol>
+<li>在 loop 前面加上*；</li>
+<li>在输出前面加上 yield;</li>
+<li>定义一个变量将 loop 赋值给_loop;</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">loop</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="variable language_">console</span>.<span class="title function_">info</span>(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> _loop = <span class="title function_">loop</span>();</span><br><span class="line"><span class="comment">//这个时候没有输出，若要输出调用next方法</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//0</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//1</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//2</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//3</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//4</span></span><br><span class="line">l.<span class="title function_">next</span>(); <span class="comment">//循环执行完毕，不会输出任何东西</span></span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
     </div>
 
     
@@ -272,20 +277,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%85%B6%E4%BB%96/" rel="tag"><i class="fa fa-tag"></i> 其他</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/aniplex/" rel="prev" title="《前端如何实现Aniplex动画效果》">
-                  <i class="fa fa-chevron-left"></i> 《前端如何实现Aniplex动画效果》
+                <a href="/post/pwd-beauty/" rel="prev" title="《Powershell美化，最新版》">
+                  <i class="fa fa-chevron-left"></i> 《Powershell美化，最新版》
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/xnyh/" rel="next" title="《关于前端的性能优化》">
-                  《关于前端的性能优化》 <i class="fa fa-chevron-right"></i>
+                <a href="/post/yomie00/" rel="next" title="《离奇的梦》">
+                  《离奇的梦》 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -335,7 +341,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/yomie/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":false,"archive":false,"delay":true,"timeout":6000,"priority":true,"url":"https://caoysong.gitee.io/post/generator/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
