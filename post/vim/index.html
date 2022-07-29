@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://caoysong.gitee.io/images/articles/vim.png">
 <meta property="og:image" content="https://caoysong.gitee.io/images/articles/vim01.png">
 <meta property="article:published_time" content="2020-04-01T19:38:15.000Z">
-<meta property="article:modified_time" content="2022-07-29T11:05:25.198Z">
+<meta property="article:modified_time" content="2022-07-29T11:30:45.530Z">
 <meta property="article:author" content="caoysong">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="vim">
@@ -110,7 +110,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -123,6 +123,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">普通模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.</span> <span class="nav-text">光标的移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E6%96%87%E5%AD%97%E7%9A%84%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.2.</span> <span class="nav-text">针对文字的光标移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E5%9C%A8%E6%96%87%E5%AD%97%E6%AE%B5%E8%90%BD%E4%B8%AD%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.3.</span> <span class="nav-text">针对在文字段落中的移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%AD%97%E7%AC%A6%E4%B9%8B%E9%97%B4%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.4.</span> <span class="nav-text">在字符之间移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#motion"><span class="nav-number">1.5.</span> <span class="nav-text">motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="nav-number">1.6.</span> <span class="nav-text">大小写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V%E2%80%93%E5%8F%AF%E8%A7%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">V–可视模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easyMotion%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">easyMotion：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -258,6 +259,230 @@
 <p>学习 vim 编辑器的语法的目的就是提高开发效率，因为 vim 的操作让开发者拜托了鼠标的限制。利用一些指令从而能够快速的完成各种操作。</p>
 </blockquote>
 <p><img src="/../images/articles/vim01.png"></p>
+<blockquote>
+<p>本文以 Vscode 中的插件 vim 进行测试：</p>
+</blockquote>
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">安装插件 Vim</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在配置文件中将下列配置复制进去：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;vim.easymotion&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.incsearch&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.useSystemClipboard&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.useCtrlKeys&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.hlsearch&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.insertModeKeyBindings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;before&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;j&quot;</span><span class="punctuation">,</span> <span class="string">&quot;j&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;after&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;Esc&gt;&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.normalModeKeyBindingsNonRecursive&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;before&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;leader&gt;&quot;</span><span class="punctuation">,</span> <span class="string">&quot;d&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;after&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;d&quot;</span><span class="punctuation">,</span> <span class="string">&quot;d&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;before&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;C-n&gt;&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;commands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;:nohl&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;before&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;K&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;commands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;lineBreakInsert&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;silent&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.leader&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;space&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;vim.handleKeys&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;&lt;C-a&gt;&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;&lt;C-f&gt;&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="普通模式"><a href="#普通模式" class="headerlink" title="普通模式"></a>普通模式</h2><h3 id="光标的移动"><a href="#光标的移动" class="headerlink" title="光标的移动"></a>光标的移动</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">普通模式下：</span><br><span class="line">h---向左移动</span><br><span class="line">l---向右移动</span><br><span class="line">j---向下移动</span><br><span class="line">k---向上移动</span><br></pre></td></tr></table></figure>
+
+<h3 id="针对文字的光标移动"><a href="#针对文字的光标移动" class="headerlink" title="针对文字的光标移动"></a>针对文字的光标移动</h3><table>
+<thead>
+<tr>
+<th align="center">按键</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">w</td>
+<td align="center">跳到一个单词的开头</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">跳到一个单词的开头</td>
+</tr>
+<tr>
+<td align="center">e</td>
+<td align="center">跳到本单词或者下一个单词结尾</td>
+</tr>
+<tr>
+<td align="center">ge</td>
+<td align="center">跳到上一个单词的结尾</td>
+</tr>
+</tbody></table>
+<h3 id="针对在文字段落中的移动"><a href="#针对在文字段落中的移动" class="headerlink" title="针对在文字段落中的移动"></a>针对在文字段落中的移动</h3><table>
+<thead>
+<tr>
+<th align="center">按键</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">跳到行首</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">跳到从行首开始的第一个非空字符</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">跳到行尾</td>
+</tr>
+<tr>
+<td align="center">gg</td>
+<td align="center">跳到第一行</td>
+</tr>
+<tr>
+<td align="center">G</td>
+<td align="center">跳到最后一行</td>
+</tr>
+</tbody></table>
+<h3 id="在字符之间移动"><a href="#在字符之间移动" class="headerlink" title="在字符之间移动"></a>在字符之间移动</h3><table>
+<thead>
+<tr>
+<th align="center">按键</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">f{char}</td>
+<td align="center">光标跳到下一个{char}所在的位置</td>
+</tr>
+<tr>
+<td align="center">F{char}</td>
+<td align="center">光标跳到上一个{char}的位置</td>
+</tr>
+<tr>
+<td align="center">t{char}</td>
+<td align="center">光标跳到下一个{char}的前一个字符的位置</td>
+</tr>
+<tr>
+<td align="center">T{char}</td>
+<td align="center">光标反向跳到上一个{char}的最后一个字符的位置</td>
+</tr>
+<tr>
+<td align="center">;</td>
+<td align="center">重复上次的字符查找的操作</td>
+</tr>
+<tr>
+<td align="center">,</td>
+<td align="center">反向查找上次查找的命令</td>
+</tr>
+</tbody></table>
+<h3 id="motion"><a href="#motion" class="headerlink" title="motion"></a>motion</h3><blockquote>
+<p>普通模式下</p>
+</blockquote>
+<p>操作符和 motion 进行配合：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">u--撤销</span><br><span class="line">c---修改；</span><br><span class="line">y---复制</span><br><span class="line">p---粘贴</span><br><span class="line">d---删除</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ciw</td>
+<td align="center">修改当前的文字</td>
+</tr>
+<tr>
+<td align="center">piw</td>
+<td align="center">复制当前的文字</td>
+</tr>
+<tr>
+<td align="center">diw</td>
+<td align="center">删除当前的文字</td>
+</tr>
+<tr>
+<td align="center">ci+包裹文字的符号</td>
+<td align="center">修改符号内的文字</td>
+</tr>
+<tr>
+<td align="center">da+包裹文字的符号</td>
+<td align="center">连同符号和里面的内容都删除</td>
+</tr>
+<tr>
+<td align="center">yi+加包裹文字的符号</td>
+<td align="center">复制符号内的所以内容</td>
+</tr>
+<tr>
+<td align="center">cib&#x2F;dab</td>
+<td align="center">修改、删除小括号里面的内容</td>
+</tr>
+<tr>
+<td align="center">daa</td>
+<td align="center">删除中括号里面的指定项</td>
+</tr>
+<tr>
+<td align="center">n+dd</td>
+<td align="center">向下删除 n 行</td>
+</tr>
+<tr>
+<td align="center">n+cc</td>
+<td align="center">向下删除 n 行并进入编辑模式</td>
+</tr>
+<tr>
+<td align="center">n+yy</td>
+<td align="center">向下复制 n 行</td>
+</tr>
+<tr>
+<td align="center">d^&#x2F;d$</td>
+<td align="center">删除以光标位置前面&#x2F;后面的内容</td>
+</tr>
+<tr>
+<td align="center">c^&#x2F;c$</td>
+<td align="center">删除以光标位置前面&#x2F;后面的内容并进入编辑模式</td>
+</tr>
+<tr>
+<td align="center">die&#x2F;cie&#x2F;yie</td>
+<td align="center">删除&#x2F;修改&#x2F;复制这个文件</td>
+</tr>
+<tr>
+<td align="center">cit&#x2F;dit</td>
+<td align="center">编辑&#x2F;删除以光标位置为准的标签里面的所有内容</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>向前找 F 和向后找 f</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f&#123;char&#125; --- 向后找到某个字符的位置</span><br><span class="line">F&#123;char&#125; --- 向前找到某个字符的位置</span><br></pre></td></tr></table></figure>
+
+<h3 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h3><table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">~</td>
+<td align="center">将光标下的字符改变大小写</td>
+</tr>
+<tr>
+<td align="center">n+~</td>
+<td align="center">将光标位置开始的 n 个字符改变其大小写</td>
+</tr>
+<tr>
+<td align="center">g~~</td>
+<td align="center">改变当前行的大小写</td>
+</tr>
+<tr>
+<td align="center">gUU</td>
+<td align="center">将当前行的字符改成大写</td>
+</tr>
+<tr>
+<td align="center">guu</td>
+<td align="center">将当前行的字母改成小写</td>
+</tr>
+<tr>
+<td align="center">gUaw(gUiw)</td>
+<td align="center">将光标下的单词改成大写</td>
+</tr>
+<tr>
+<td align="center">guaw(guiw)</td>
+<td align="center">将光标下的单词改成小写</td>
+</tr>
+</tbody></table>
+<h2 id="V–可视模式"><a href="#V–可视模式" class="headerlink" title="V–可视模式"></a>V–可视模式</h2><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v+h/j/k/l---进行选中区域</span><br></pre></td></tr></table></figure>
+
+<p>VIM-VSCode tips:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gh--查看一些说明</span><br><span class="line">gt--切换到下一个选项卡</span><br><span class="line">gT--切换到上一个选项卡</span><br><span class="line">n+gt/gT--切换到后/前n个选项卡</span><br><span class="line">ctrl+0--跳到侧边栏</span><br><span class="line">l--光标从侧边栏跳到指定文件</span><br><span class="line">ctrl+1/2/3/4...---光标跳到指定的分屏</span><br></pre></td></tr></table></figure>
+
+<h2 id="easyMotion："><a href="#easyMotion：" class="headerlink" title="easyMotion："></a>easyMotion：</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;leader&gt;&lt;leader&gt;s&#123;char&#125;--搜指定字符</span><br><span class="line">&lt;leader&gt;&lt;leader&gt;f&#123;char&#125;--找后面指定字符</span><br><span class="line">&lt;leader&gt;&lt;leader&gt;F&#123;char&#125;--找前面指定字符</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>未完待续</p>
+</blockquote>
 
     </div>
 
@@ -275,13 +500,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/type/" rel="prev" title="《比typeof运算符更准确的类型判断》">
-                  <i class="fa fa-chevron-left"></i> 《比typeof运算符更准确的类型判断》
+                <a href="/post/blob/" rel="prev" title="《关于Blob对象》">
+                  <i class="fa fa-chevron-left"></i> 《关于Blob对象》
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/xnlb/" rel="next" title="《如何以长列表的形式显示上万条数据》">
-                  《如何以长列表的形式显示上万条数据》 <i class="fa fa-chevron-right"></i>
+                <a href="/post/type/" rel="next" title="《比typeof运算符更准确的类型判断》">
+                  《比typeof运算符更准确的类型判断》 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
