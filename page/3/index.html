@@ -188,6 +188,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/ts-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="caoysong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nagisa">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | nagisa">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/ts-2/" class="post-title-link" itemprop="url">《TypeScript学习--接口和对象以及数组类型》</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-03 03:38:15" itemprop="dateCreated datePublished" datetime="2021-03-03T03:38:15+08:00">2021-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/typescript/" itemprop="url" rel="index"><span itemprop="name">typescript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="对象的类型"><a href="#对象的类型" class="headerlink" title="对象的类型"></a>对象的类型</h2><blockquote>
+<p>在 typescript 中，我们定义对象的方式要用关键字 interface（接口），我的理解是使用 interface 来定义一种约束，让数据的结构满足约束的格式。定义方式如下：</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样写是会报错的 因为我们在person定义了a，b但是对象里面缺少b属性</span></span><br><span class="line"><span class="comment">//使用接口约束的时候不能多一个属性也不能少一个属性</span></span><br><span class="line"><span class="comment">//必须与接口保持一致</span></span><br><span class="line">interface <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">b</span>: string;</span><br><span class="line">  <span class="attr">a</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">person</span>: <span class="title class_">Person</span> = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="string">&quot;213&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/ts-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/ts-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -821,110 +913,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/type/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="caoysong">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="nagisa">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | nagisa">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/type/" class="post-title-link" itemprop="url">《比typeof运算符更准确的类型判断》</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-04-02 03:38:15" itemprop="dateCreated datePublished" datetime="2020-04-02T03:38:15+08:00">2020-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%89%8D%E7%AB%AF/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>不同数据类型的<code>Object.prototype.toString</code>方法返回值如下:</p>
-</blockquote>
-<ul>
-<li>数值：返回<code>[object Number]</code>。</li>
-<li>字符串：返回<code>[object String]</code>。</li>
-<li>布尔值：返回<code>[object Boolean]</code>。</li>
-<li>undefined：返回<code>[object Undefined]</code>。</li>
-<li>null：返回<code>[object Null]</code>。</li>
-<li>数组：返回<code>[object Array</code>]。</li>
-<li>arguments 对象：返回<code>[object Arguments]</code>。</li>
-<li>函数：返回<code>[object Function]</code>。</li>
-<li>Error 对象：返回<code>[object Error]</code>。</li>
-<li>Date 对象：返回<code>[object Date]</code>。</li>
-<li>RegExp 对象：返回<code>[object RegExp]</code>。</li>
-<li>其他对象：返回<code>[object Object]</code>。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/type/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/vim/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1014,7 +1002,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/blob/">
+    <link itemprop="mainEntityOfPage" href="https://caoysong.gitee.io/post/type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1032,7 +1020,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/post/blob/" class="post-title-link" itemprop="url">《关于Blob对象》</a>
+          <a href="/post/type/" class="post-title-link" itemprop="url">《比typeof运算符更准确的类型判断》</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1043,7 +1031,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-03-12 03:38:15" itemprop="dateCreated datePublished" datetime="2020-03-12T03:38:15+08:00">2020-03-12</time>
+      <time title="创建时间：2020-04-02 03:38:15" itemprop="dateCreated datePublished" datetime="2020-04-02T03:38:15+08:00">2020-04-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1070,13 +1058,24 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>Blob 表示的是二进制大文件，Binary Large Object.</p>
+<p>不同数据类型的<code>Object.prototype.toString</code>方法返回值如下:</p>
 </blockquote>
-<p>Blob 对象表示一个不可变，原始数据的类文件对象。Blob 表示的不一定是 javascript 的原生格式的数据，File 接口基于 Blob,继承了 Blob 的功能并将其扩展使其支持用户系统上的文件。</p>
-<p>要从其他非 blob 对象和数据构造一个 Blob，请使用 Blob() 构造函数。</p>
+<ul>
+<li>数值：返回<code>[object Number]</code>。</li>
+<li>字符串：返回<code>[object String]</code>。</li>
+<li>布尔值：返回<code>[object Boolean]</code>。</li>
+<li>undefined：返回<code>[object Undefined]</code>。</li>
+<li>null：返回<code>[object Null]</code>。</li>
+<li>数组：返回<code>[object Array</code>]。</li>
+<li>arguments 对象：返回<code>[object Arguments]</code>。</li>
+<li>函数：返回<code>[object Function]</code>。</li>
+<li>Error 对象：返回<code>[object Error]</code>。</li>
+<li>Date 对象：返回<code>[object Date]</code>。</li>
+<li>RegExp 对象：返回<code>[object RegExp]</code>。</li>
+<li>其他对象：返回<code>[object Object]</code>。
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/blob/#more" rel="contents">
+              <a class="btn" href="/post/type/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
